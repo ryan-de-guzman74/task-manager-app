@@ -1,148 +1,176 @@
 # Task Manager Web App
 
-Made by Ryan De Guzman, ryanlink74@outlook.com
+**Made by:** Ryan De Guzman  
+**Email:** ryanlink74@outlook.com
 
-This is a full-stack task management application built with Django REST Framework and React.js, designed for the ABBA Software Development Operational Test.
+A full-stack task management application built with Django REST Framework and React.js for the ABBA Software Development Operational Test.
 
-1. Architecture
+## Architecture
 
 - **Backend**: Django + Django REST Framework with ViewSets
 - **Frontend**: React.js with Hooks
 - **Database**: SQLite
 - **API Communication**: Axios
 
-### Backend Setup (Django)
+## Prerequisites
+
+- **Python**: 3.8+
+- **Node.js**: v18.20.8 (required)
+- **npm**: 9.0+
+
+### Version Check
+```bash
+python --version  # Should be 3.8+
+node --version    # Should be v18.20.8
+npm --version     # Should be 9.0+
+```
+
+## Quick Start
+
+### Backend Setup
 
 1. **Navigate to backend directory:**
    ```bash
    cd backend
    ```
-2. **Install dependencies directly (simpler approach):**
-   ```bash
-   pip install django djangorestframework
-   ```
-   
-   **OR create virtual environment (if you prefer):**
-   ```bash
-   python -m venv venv
-   # On Windows:
-   venv\Scripts\activate
 
-   # On Mac/Linux:
-   source venv/bin/activate
+2. **Install dependencies:**
+   ```bash
    pip install django djangorestframework
    ```
-4. **Run migrations:**   
+
+3. **Run migrations:**
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
-   
-5. **Start the development server:**
+
+4. **Start server:**
    ```bash
    python manage.py runserver
    ```
-   The backend will be available at `http://127.0.0.1:8000/`
+   
+   Backend: `http://127.0.0.1:8000/`
 
-
-### Frontend Setup (React)
+### Frontend Setup
 
 1. **Navigate to frontend directory:**
    ```bash
    cd frontend
    ```
-2. **Install dependencies:**   
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
-3. **Start the development server:**
+
+3. **Start server:**
    ```bash
    npm start
    ```
-   The frontend will be available at `http://localhost:3000/`
+   
+   Frontend: `http://localhost:3000/`
 
-**Note:** If you get a cross-env error, run:
-```bash
-npm install cross-env --save
-```
+## API Endpoints
 
-
-
-2.  API Endpoints
-
-All endpoints are prefixed with the base URL: `http://127.0.0.1:8000/`
+Base URL: `http://127.0.0.1:8000/`
 
 | Method  | Endpoint | Description |
 |---------|----------|-------------|
 | `GET`   | `/tasks/` | List all tasks |
 | `POST`  | `/tasks/` | Create a new task |
 | `GET`   | `/tasks/{id}/` | Retrieve a task by ID |
-| `PUT`   | `/tasks/{id}/` | Update a task (title & description) |
-| `PATCH` | `/tasks/{id}/` | Toggle task completed status |
+| `PUT`   | `/tasks/{id}/` | Update a task |
+| `PATCH` | `/tasks/{id}/` | Toggle completion status |
 | `DELETE`| `/tasks/{id}/` | Delete a task |
 
-### Example API Usage
-
-**Create a new task:**
-```bash
-curl -X POST http://127.0.0.1:8000/tasks/ \
-  -H "Content-Type: application/json" \
-  -d '{"title": "New Task", "description": "Task description"}'
+### Task Model
+```json
+{
+  "id": 1,
+  "title": "Sample Task",
+  "description": "Task description (optional)",
+  "completed": false,
+  "created_at": "2024-01-01T12:00:00Z"
+}
 ```
 
-**Get all tasks:**
-```bash
-curl http://127.0.0.1:8000/tasks/
-```
+## Features
 
-**Toggle task completion:**
-```bash
-curl -X PATCH http://127.0.0.1:8000/tasks/1/
-```
-
-
-
-3.  Features
-
-### Core Requirements 
--  View list of tasks
--  Create new tasks
--  Update existing tasks
--  Mark tasks as completed
--  Delete tasks
--  Django REST Framework with ViewSets
--  React.js with Hooks
--  Axios for API calls
--  Loading states and error handling
+### Core Requirements
+- View, create, update, delete tasks
+- Mark tasks as completed
+- Django REST Framework with ViewSets
+- React.js with Hooks
+- Loading states and error handling
 
 ### Bonus Features
-- **Search functionality** - Filter tasks by title or description
-- **Status filtering** - View all, pending, or completed tasks
-- **Sorting options** - Sort by title, status, or creation date
-- **Responsive design** - Works on desktop, tablet, and mobile
-- **Modern UI** - Professional design with smooth animations
-- **Confirmation dialogs** - Prevent accidental deletions
-- **Task counters** - Shows filtered vs total task count
+- Search functionality
+- Status filtering (all/pending/completed)
+- Task sorting options
+- Responsive design
+- Confirmation dialogs
 
+## Project Structure
 
+```
+task-manager-app/
+├── backend/                    # Django REST API
+│   ├── config/                # Django settings
+│   ├── tasks/                 # Tasks app
+│   │   ├── models.py         # Task model
+│   │   ├── views.py          # API views
+│   │   ├── serializers.py    # Task serializer
+│   │   └── urls.py           # Task URLs
+│   └── db.sqlite3            # SQLite database
+├── frontend/                  # React.js application
+│   ├── src/
+│   │   ├── components/       # React components
+│   │   ├── App.js            # Main component
+│   │   └── api.js            # API configuration
+│   └── package.json          # Dependencies
+└── README.md
+```
 
-
-4.   Testing the Application
+## Testing
 
 1. **Start both servers:**
    - Backend: `http://127.0.0.1:8000/`
    - Frontend: `http://localhost:3000/`
 
-2. **Test CRUD operations:**
-   - Create a new task using the form
-   - Edit an existing task by clicking "Edit"
+2. **Test operations:**
+   - Create, edit, delete tasks
    - Mark tasks as complete/incomplete
-   - Delete tasks with confirmation
    - Use search and filter functionality
 
-3. **Verify API endpoints:**
-   - Check browser developer tools for API calls
-   - Use curl commands to test endpoints directly
+## Troubleshooting
+
+- **Cross-env error:** `npm install cross-env --save`
+- **Node version mismatch:** Ensure Node.js v18.20.8
+- **Python issues:** Ensure Python 3.8+ is installed
+- **Port conflicts:** Backend (8000), Frontend (3000)
+
+## Test Compliance
+
+✅ **Backend Requirements**
+- Django project with tasks app
+- Django REST Framework with ViewSets
+- SQLite database
+- All required API endpoints
+
+✅ **Frontend Requirements**
+- React.js with Hooks
+- All CRUD operations
+- Axios for API calls
+- Loading states and error handling
+
+✅ **Integration & Testing**
+- Full frontend-backend integration
+- All CRUD operations working from UI
+- Proper repository structure
 
 ---
 
+**Built for ABBA Software Development Operational Test**  
+**Node.js Version: v18.20.8**  
+**Python Version: 3.8+**
