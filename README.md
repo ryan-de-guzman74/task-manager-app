@@ -15,7 +15,7 @@ A full-stack task management application built with Django REST Framework and Re
 ## Prerequisites
 
 - **Python**: 3.8+
-- **Node.js**: v18.20.8 (required)
+- **Node.js**: v18.20.8 (required - must match exactly)
 - **npm**: 9.0+
 
 ### Version Check
@@ -23,6 +23,30 @@ A full-stack task management application built with Django REST Framework and Re
 python --version  # Should be 3.8+
 node --version    # Should be v18.20.8
 npm --version     # Should be 9.0+
+```
+
+### Matching Node.js Version to v18.20.8
+
+**⚠️ Important:** This project requires Node.js v18.20.8 exactly.
+
+**Check current version:**
+```bash
+node --version
+```
+
+**Change to Node.js v18.20.8:**
+```bash
+# Install and switch to v18.20.8
+nvm install 18.20.8
+nvm use 18.20.8
+
+# Set as default version
+nvm alias default 18.20.8
+```
+
+**Verify version:**
+```bash
+node --version  # Should output: v18.20.8
 ```
 
 ## Quick Start
@@ -53,6 +77,8 @@ npm --version     # Should be 9.0+
    Backend: `http://127.0.0.1:8000/`
 
 ### Frontend Setup
+
+**⚠️ Ensure you're using Node.js v18.20.8 before proceeding**
 
 1. **Navigate to frontend directory:**
    ```bash
