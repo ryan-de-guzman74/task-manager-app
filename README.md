@@ -14,10 +14,20 @@ This is a full-stack task management application built with Django REST Framewor
 ### Backend Setup (Django)
 
 1. **Navigate to backend directory:**   :   cd backend
-2. **Create virtual environment (optional but recommended):**   :   
+2. **Install dependencies directly (simpler approach):**
+   ```bash
+   pip install django djangorestframework
+   ```
+   
+   **OR create virtual environment (if you prefer):**
+   ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-3. **Install dependencies:**    :   pip install django djangorestframework
+   # On Windows:
+   venv\Scripts\activate
+   # On Mac/Linux:
+   source venv/bin/activate
+   pip install django djangorestframework
+   ```
 4. **Run migrations:**  :   
    python manage.py makemigrations
    python manage.py migrate
@@ -32,6 +42,11 @@ This is a full-stack task management application built with Django REST Framewor
 2. **Install dependencies:**    :   npm install
 3. **Start the development server:**    :   npm start
    The frontend will be available at `http://localhost:3000/`
+
+**Note:** If you get a cross-env error, run:
+```bash
+npm install cross-env --save
+```
 
 
 
