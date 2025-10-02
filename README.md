@@ -34,7 +34,33 @@ npm --version     # Should be 9.0+
 node --version
 ```
 
-**Change to Node.js v18.20.8:**
+**If nvm is not installed, install it first:**
+
+**Windows (PowerShell as Administrator):**
+```powershell
+# Install nvm-windows via PowerShell
+iwr -useb https://raw.githubusercontent.com/coreybutler/nvm-windows/master/install.ps1 | iex
+```
+
+**Windows (Command Prompt as Administrator):**
+```cmd
+# Download and run nvm-windows installer
+curl -o nvm-setup.exe https://github.com/coreybutler/nvm-windows/releases/download/1.1.12/nvm-setup.exe
+nvm-setup.exe
+```
+
+**Mac/Linux:**
+```bash
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# Reload your shell configuration
+source ~/.bashrc
+# OR
+source ~/.zshrc
+```
+
+**Then change to Node.js v18.20.8:**
 ```bash
 # Install and switch to v18.20.8
 nvm install 18.20.8
@@ -43,6 +69,10 @@ nvm use 18.20.8
 # Set as default version
 nvm alias default 18.20.8
 ```
+
+**Alternative (if nvm doesn't work):**
+- Download Node.js v18.20.8 directly from [nodejs.org](https://nodejs.org/)
+- Install following the setup wizard
 
 **Verify version:**
 ```bash
