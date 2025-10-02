@@ -18,14 +18,7 @@ A full-stack task management application built with Django REST Framework and Re
 - **Node.js**: v18.20.8 (required - must match exactly)
 - **npm**: 9.0+
 
-### Version Check
-```bash
-python --version  # Should be 3.8+
-node --version    # Should be v18.20.8
-npm --version     # Should be 9.0+
-```
-
-### Matching Node.js Version to v18.20.8
+### Node.js Version Matching
 
 **⚠️ Important:** This project requires Node.js v18.20.8 exactly.
 
@@ -34,37 +27,20 @@ npm --version     # Should be 9.0+
 node --version
 ```
 
-**Simple Solution - Direct Download (Recommended):**
+**If you don't have v18.20.8, install it:**
 
-1. **Download Node.js v18.20.8:**
-   - Go to [nodejs.org](https://nodejs.org/)
-   - Download Node.js v18.20.8 LTS
-   - Run the installer and follow the setup wizard
+**Option 1: Direct Download (Recommended)**
+1. Go to [nodejs.org](https://nodejs.org/)
+2. Download Node.js v18.20.8 LTS
+3. Run the installer and follow the setup wizard
 
-2. **Verify installation:**
-   ```bash
-   node --version  # Should output: v18.20.8
-   ```
-
-**Alternative - Using nvm (if you prefer):**
-
-**Windows:**
-```powershell
-# One-line nvm installation
-iwr -useb https://raw.githubusercontent.com/coreybutler/nvm-windows/master/install.ps1 | iex
-
-# Restart PowerShell, then:
-nvm install 18.20.8
-nvm use 18.20.8
-```
-
-**Mac/Linux:**
+**Option 2: Using nvm**
 ```bash
-# Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-source ~/.bashrc
+# Install nvm first
+# Windows: iwr -useb https://raw.githubusercontent.com/coreybutler/nvm-windows/master/install.ps1 | iex
+# Mac/Linux: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
-# Install Node.js v18.20.8
+# Then install Node.js v18.20.8
 nvm install 18.20.8
 nvm use 18.20.8
 ```
@@ -83,9 +59,20 @@ node --version  # Should output: v18.20.8
    cd backend
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies (with error handling):**
    ```bash
+   # Try basic installation first
    pip install django djangorestframework
+   
+   # If pip fails, try with --user flag
+   pip install --user django djangorestframework
+   
+   # If still fails, try upgrading pip first
+   python -m pip install --upgrade pip
+   pip install django djangorestframework
+   
+   # Alternative: use pip3 if pip doesn't work
+   pip3 install django djangorestframework
    ```
 
 3. **Run migrations:**
@@ -101,9 +88,43 @@ node --version  # Should output: v18.20.8
    
    Backend: `http://127.0.0.1:8000/`
 
-### Frontend Setup
+### Backend Troubleshooting
 
-**⚠️ Ensure you're using Node.js v18.20.8 before proceeding**
+**If pip install fails:**
+```bash
+# Method 1: Upgrade pip
+python -m pip install --upgrade pip
+
+# Method 2: Use --user flag
+pip install --user django djangorestframework
+
+# Method 3: Use pip3
+pip3 install django djangorestframework
+
+# Method 4: Use python -m pip
+python -m pip install django djangorestframework
+```
+
+**If Django commands fail:**
+```bash
+# Try with python -m
+python -m django makemigrations
+python -m django migrate
+python -m django runserver
+
+# Or try with python3
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver
+```
+
+**If port 8000 is busy:**
+```bash
+# Use different port
+python manage.py runserver 8001
+```
+
+### Frontend Setup
 
 1. **Navigate to frontend directory:**
    ```bash
@@ -196,10 +217,21 @@ task-manager-app/
 
 ## Troubleshooting
 
-- **Cross-env error:** `npm install cross-env --save`
-- **Node version mismatch:** Ensure Node.js v18.20.8
+### Backend Issues
+- **pip install fails:** Try `pip install --user django djangorestframework` or `python -m pip install --upgrade pip`
+- **Django commands fail:** Try `python -m django runserver` or `python3 manage.py runserver`
+- **Port 8000 busy:** Use `python manage.py runserver 8001`
 - **Python issues:** Ensure Python 3.8+ is installed
+
+### Frontend Issues
+- **Cross-env error:** `npm install cross-env --save`
+- **Node version issues:** Must use Node.js v18.20.8 exactly
+- **npm install fails:** Try `npm install --legacy-peer-deps`
+- **Port 3000 busy:** Frontend will automatically use next available port
+
+### General Issues
 - **Port conflicts:** Backend (8000), Frontend (3000)
+- **Permission errors:** Run terminal as Administrator (Windows) or use `sudo` (Mac/Linux)
 
 ## Test Compliance
 
@@ -223,5 +255,4 @@ task-manager-app/
 ---
 
 **Built for ABBA Software Development Operational Test**  
-**Node.js Version: v18.20.8**  
-**Python Version: 3.8+**
+**Node.js Version: Latest LTS (or v18.20.8)**
