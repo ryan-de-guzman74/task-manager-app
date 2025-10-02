@@ -34,56 +34,40 @@ npm --version     # Should be 9.0+
 node --version
 ```
 
-**If nvm is not installed, install it first:**
+**Simple Solution - Direct Download (Recommended):**
 
-**Windows (PowerShell as Administrator):**
+1. **Download Node.js v18.20.8:**
+   - Go to [nodejs.org](https://nodejs.org/)
+   - Download Node.js v18.20.8 LTS
+   - Run the installer and follow the setup wizard
+
+2. **Verify installation:**
+   ```bash
+   node --version  # Should output: v18.20.8
+   ```
+
+**Alternative - Using nvm (if you prefer):**
+
+**Windows:**
 ```powershell
-# Install nvm-windows via PowerShell
+# One-line nvm installation
 iwr -useb https://raw.githubusercontent.com/coreybutler/nvm-windows/master/install.ps1 | iex
-```
 
-**Windows (Command Prompt as Administrator):**
-```cmd
-# Download nvm-windows installer
-curl -o nvm-setup.exe https://github.com/coreybutler/nvm-windows/releases/download/1.1.12/nvm-setup.exe
-
-# Run the installer (use .\ prefix in PowerShell)
-.\nvm-setup.exe
-```
-
-**Windows (PowerShell - if curl doesn't work):**
-```powershell
-# Download using PowerShell
-Invoke-WebRequest -Uri "https://github.com/coreybutler/nvm-windows/releases/download/1.1.12/nvm-setup.exe" -OutFile "nvm-setup.exe"
-
-# Run the installer
-.\nvm-setup.exe
+# Restart PowerShell, then:
+nvm install 18.20.8
+nvm use 18.20.8
 ```
 
 **Mac/Linux:**
 ```bash
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-
-# Reload your shell configuration
 source ~/.bashrc
-# OR
-source ~/.zshrc
-```
 
-**Then change to Node.js v18.20.8:**
-```bash
-# Install and switch to v18.20.8
+# Install Node.js v18.20.8
 nvm install 18.20.8
 nvm use 18.20.8
-
-# Set as default version
-nvm alias default 18.20.8
 ```
-
-**Alternative (if nvm doesn't work):**
-- Download Node.js v18.20.8 directly from [nodejs.org](https://nodejs.org/)
-- Install following the setup wizard
 
 **Verify version:**
 ```bash
