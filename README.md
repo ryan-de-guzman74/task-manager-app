@@ -44,9 +44,20 @@ iwr -useb https://raw.githubusercontent.com/coreybutler/nvm-windows/master/insta
 
 **Windows (Command Prompt as Administrator):**
 ```cmd
-# Download and run nvm-windows installer
+# Download nvm-windows installer
 curl -o nvm-setup.exe https://github.com/coreybutler/nvm-windows/releases/download/1.1.12/nvm-setup.exe
-nvm-setup.exe
+
+# Run the installer (use .\ prefix in PowerShell)
+.\nvm-setup.exe
+```
+
+**Windows (PowerShell - if curl doesn't work):**
+```powershell
+# Download using PowerShell
+Invoke-WebRequest -Uri "https://github.com/coreybutler/nvm-windows/releases/download/1.1.12/nvm-setup.exe" -OutFile "nvm-setup.exe"
+
+# Run the installer
+.\nvm-setup.exe
 ```
 
 **Mac/Linux:**
